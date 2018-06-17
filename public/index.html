@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+  <title>AngularJS with Database</title>
+  <style>
+   .btn{
+      margin: 0px 15px !important;
+    }
+    td{
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h3>AngularJS Integration with MongoDB</h3>
+      <div ng-controller="myCtrl" class="container">
+          <form name="myForm">
+            <input type="text" placeholder="Enter First Name" ng-model="name.fName"/>
+            <input type="text" placeholder="Enter Last Name" ng-model="name.lName"/>
+              <button class="btn btn-primary" value="Add" ng-click="add(name)">Add</button>
+
+              <div ng-if="name._id">
+                  <input type="text" ng-model="name.firstName"/>
+                  <input type="text" ng-model="name.lastName"/>
+                  <button class="btn btn-info" ng-click="update(name)"  type="submit">Update</button>
+                </div>
+              <!--
+              <button class="btn btn-info" ng-click="update(name)" ng-if="name._id" type="submit">Update</button>   
+              -->
+             <table>
+                <tr ng-repeat="name in names">
+                  <td>{{name.firstName}}</td>
+                  <td>{{name.lastName}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <button class="btn btn-danger" ng-click="remove(name)">Remove</button>
+                      <button class="btn btn-warning" ng-click="edit(name._id)">Edit</button>
+                    </div>
+                  </td>
+                </tr>  
+             </table>
+          </form>
+      </div>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="app/app.js"></script>
+<script src="app/names.js"></script>
+</body>
+</html>
